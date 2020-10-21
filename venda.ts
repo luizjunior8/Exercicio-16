@@ -15,6 +15,7 @@ export class Venda {
         private itens : Array<Item> = [],
         private pagamento : Pagamento = new Pagamento("", 0, 0)) { }
 
+
     public valida_dados_obrigatorios(): void {
 
         if (!this.dataHora){
@@ -91,11 +92,13 @@ export class Venda {
         return `${datahora} ${_ccf} ${_coo}`
     }
 
+
     public montarPagamento(metodoPagamento: string, valorRecebido: number) {
 
         let valorCompra = this.totalCompra()
         this.pagamento = new Pagamento(metodoPagamento, valorRecebido, valorCompra)
     }
+
 
     public imprimeCupom(): string {
         this.valida_dados_obrigatorios();
@@ -115,5 +118,4 @@ TOTAL R$ ${conta}
 ${infoFormaPag} ${infoValorRecebido}
 Troco R$ ${infoTroco}`;
     }
-
 }  
